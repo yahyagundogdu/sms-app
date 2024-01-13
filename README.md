@@ -17,7 +17,7 @@ Bu uygulamanın backend tarafı için yüklenen 3. parti paketler aşağıdaki g
 -   [Browner12 Helpers](https://github.com/browner12/helpers)
 -   [L5-Swagger](https://github.com/DarkaOnLine/L5-Swagger?tab=readme-ov-file)
 
-## Prroje Eklenen Komutlar
+## Projeye Eklenen Komutlar
 
 > Uygulama Kurulumu için
 >
