@@ -1,0 +1,32 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+
+class {{ class }} extends Model
+{
+    use HasFactory;
+    use SoftDeletes;
+    use LogsActivity;
+
+    protected $fillable = [
+        // some column
+    ];
+
+    protected static bool $logFillable = true;
+
+    protected static string $logName = '{{ class }}';
+
+    protected static bool $logOnlyDirty = true;
+
+    public function getActivityLogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['*']);
+    }
+}

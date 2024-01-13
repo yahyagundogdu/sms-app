@@ -1,0 +1,367 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sms Api",
+        "description": "Sms İşlemlerinizi Giriş yaptıktan sonra yapabilirsini",
+        "contact": {
+            "email": "kml.yhy.65@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Kayıt Ol",
+                "operationId": "da8643013c2941f5ed7f8a9c9b4a7f7a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string",
+                                        "example": "Hakan"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "example": "Özbay"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "password123"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "password123"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "test@gmail.com"
+                                    },
+                                    "user_name": {
+                                        "type": "string",
+                                        "example": "testkullanici"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Başarılı"
+                    },
+                    "422": {
+                        "description": "Doğrulama Hatası"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Giriş Yap",
+                "operationId": "535ffeda4b78916efd658b2844ea897a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_name": {
+                                        "type": "string",
+                                        "example": "programmer1453"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "123456"
+                                    },
+                                    "device_id": {
+                                        "type": "string",
+                                        "example": "123456",
+                                        "nullable": true
+                                    },
+                                    "device_model": {
+                                        "type": "string",
+                                        "example": "iPhone 12 Pro Max",
+                                        "nullable": true
+                                    },
+                                    "device_version": {
+                                        "type": "string",
+                                        "example": "14.4",
+                                        "nullable": true
+                                    },
+                                    "app_version": {
+                                        "type": "string",
+                                        "example": "1.0",
+                                        "nullable": true
+                                    },
+                                    "device_type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "I",
+                                            "A",
+                                            "O"
+                                        ],
+                                        "example": "A",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Başarılı"
+                    },
+                    "401": {
+                        "description": "Giriş Başarısız"
+                    }
+                }
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Çıkış Yap",
+                "operationId": "46f8a14c8083abb69eed72768aa08629",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "app_version": {
+                                        "type": "string",
+                                        "example": "1.0",
+                                        "nullable": true
+                                    },
+                                    "device_id": {
+                                        "type": "string",
+                                        "example": "123456",
+                                        "nullable": true
+                                    },
+                                    "device_model": {
+                                        "type": "string",
+                                        "example": "iPhone 12 Pro Max",
+                                        "nullable": true
+                                    },
+                                    "device_version": {
+                                        "type": "string",
+                                        "example": "14.4",
+                                        "nullable": true
+                                    },
+                                    "device_type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "I",
+                                            "A",
+                                            "O"
+                                        ],
+                                        "example": "A",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Başarılı"
+                    },
+                    "401": {
+                        "description": "İşlem Başarısız"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/token/refresh": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Token Yeniler",
+                "operationId": "b01490576e5ddd0fdde2282ab998a1f4",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "refresh_token": {
+                                        "type": "string",
+                                        "example": "your_refresh_token"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Başarılı"
+                    },
+                    "401": {
+                        "description": "İşlem Başarısız"
+                    }
+                }
+            }
+        },
+        "/api/sms": {
+            "get": {
+                "tags": [
+                    "Sms"
+                ],
+                "summary": "Tarih Aralığı Sorgula",
+                "operationId": "18bdb6d0184b2db6742fff1c2647a5ff",
+                "parameters": [
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "Başlangıç Tarihi",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2024-01-01"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "Bitiş Tarihi",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2024-12-31"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Başarılı"
+                    },
+                    "400": {
+                        "description": "Geçersiz istek parametreleri"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Sms"
+                ],
+                "summary": "Sms Gönder",
+                "operationId": "14afe7bf773eeca3e1ede91f3b20252d",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "numbers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "example": 5462478411
+                                        },
+                                        "example": "[5462478412,5462478411]"
+                                    },
+                                    "message": {
+                                        "type": "string",
+                                        "example": "Test Mesajı"
+                                    },
+                                    "country_id": {
+                                        "type": "String",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sms talebiniz başarıyla alınmıştır. İşlem sonucunu geçmişten listeleterek görebilirsiniz."
+                    },
+                    "401": {
+                        "description": "Sms gönderiminde bir hata oluştu. Lütfen tekrar deneyiniz."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/sms/{id}": {
+            "get": {
+                "tags": [
+                    "Sms"
+                ],
+                "summary": "Belirli bir SMS'i getir",
+                "operationId": "64844c10a2302f5efc2d4a6588fff057",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "SMS ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "İşlem başarıyla gerçekleşti."
+                    },
+                    "401": {
+                        "description": "Hata."
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer_token": {
+                "type": "http",
+                "scheme": "bearer",
+                "description": "Bearer token",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
