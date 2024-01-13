@@ -64,7 +64,7 @@ class SmsController extends Controller
         $filter_start_date = Carbon::parse($start_date);
         $filter_end_date = Carbon::parse($end_date)->addHours(11)->addMinutes(59)->addSeconds(59);
 
-        $result = Sms::where('customer_id', $customer->id)
+        $result = $this->smsModel::where('customer_id', $customer->id)
             ->when([$start_date, $end_date], function ($query) use ($filter_start_date, $filter_end_date) {
                 if ($filter_start_date && $filter_end_date) {
                     $query->whereBetween('created_at', [$filter_start_date, $filter_end_date]);
